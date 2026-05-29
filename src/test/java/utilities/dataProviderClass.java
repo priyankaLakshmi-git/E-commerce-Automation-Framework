@@ -2,6 +2,7 @@ package utilities;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -11,17 +12,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 public class dataProviderClass 
 {
-	
-	@DataProvider(name="Browser_Details")
-	public  Object[][] BrowserDetails()
-	{
-		return new Object[][]
-		{
-			{"chrome","https://www.saucedemo.com/"}
-      	};
-	}
-	
-
 	@DataProvider(name="login_standard_user")
 	public Object[][] testdata1()
 	{
@@ -48,28 +38,25 @@ public class dataProviderClass
 	 {"problem_user","secret_sauce"}
 	};
 	}
-	
-	@DataProvider(name="login_invalid_credentials")
-	public Object[][] testdata4() throws IOException
-	{		
-		  Sheet s=Login_testdata.OpenExcel();		  
-		  List <Object[]> credentials=new ArrayList<>();
-		  int i;
-		  for(i=1;i<=s.getLastRowNum();i++)
-		  {
-			  if(s.getRow(i).getCell(0).toString().contains("invalid_user"))
-			  {
-			  System.out.println(s.getRow(i).getCell(0).toString());
-			  credentials.add(new Object[]{s.getRow(i).getCell(1).toString(),s.getRow(i).getCell(2).toString()});  
-			  break;
-			  }
-			 
-		  }	
-		  return credentials.toArray(new Object[0][]);
+	@DataProvider(name="login_invalid_user",parallel=true)
+	public Object[][] testdata4()
+	{
+	return new Object[][]
+	{
+	 {"invalid_user","secret_sauce"}
+	};
+	}
+	@DataProvider(name="login_invalid_password",parallel=true)
+	public Object[][] testdata5()
+	{
+	return new Object[][]
+	{
+	 {"standard_user","invalid_password"}
+	};
 	}
 	
 	@DataProvider(name="login_empty_user",parallel=true)
-	public Object[][] testdata7()
+	public Object[][] testdata6()
 	{
 	return new Object[][]
 	{
@@ -78,7 +65,7 @@ public class dataProviderClass
 	}	
 	
 	@DataProvider(name="login_empty_password",parallel=true)
-	public Object[][] testdata8()
+	public Object[][] testdata7()
 	{
 	return new Object[][]
 	{
@@ -87,7 +74,7 @@ public class dataProviderClass
 	}
 	
 	@DataProvider(name="login_empty_username_password",parallel=true)
-	public Object[][] testdata9()
+	public Object[][] testdata8()
 	{
 	return new Object[][]
 	{
@@ -96,7 +83,7 @@ public class dataProviderClass
 	}
 	
 	@DataProvider(name="login_performance_glitch_user",parallel=true)
-	public Object[][] testdata10()
+	public Object[][] testdata9()
 	{
 	return new Object[][]
 	{
@@ -105,7 +92,7 @@ public class dataProviderClass
 	}
 	
 	@DataProvider(name="productdetails")
-		public Object[][]testdata11() throws  IOException, InvalidFormatException 
+		public Object[][]testdata10() throws  IOException, InvalidFormatException 
 		{
 		    String[] products;
 		    File products_file=new File(System.getProperty("user.home")+File.separator+"Desktop"+File.separator+

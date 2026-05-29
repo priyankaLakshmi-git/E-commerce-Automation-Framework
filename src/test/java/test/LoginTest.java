@@ -27,7 +27,7 @@ public class LoginTest
 	  lp = new POMClass(driver1);
   }
   @Test(groups="group_standard_user" ,dataProviderClass=dataProviderClass.class,dataProvider="productdetails")
-  public  void standard_user(String username,String pwd) throws InvalidFormatException, IOException, InterruptedException
+  public  void standard_user(String username,String pwd) 
   {	  	  
 	  lp.enterUsername(username);
 	  Listenerclass.test.get().info("Entered user");  
@@ -61,7 +61,7 @@ public class LoginTest
 	  
 }
   
-  @Test(groups="group_invalid_login",/*retryAnalyzer = retryClass.class,*/dataProviderClass=dataProviderClass.class,dataProvider ="login_invalid_credentials")
+  @Test(groups="group_invalid_login",/*retryAnalyzer = retryClass.class,*/dataProviderClass=dataProviderClass.class,dataProvider ="login_invalid_user")
   public  void invalid_user(String user,String pwd) throws IOException
   {	  	  	  	  
 	  lp.enterUsername(user);
@@ -77,7 +77,7 @@ public class LoginTest
 	  Listenerclass.test.get().pass("Invalid user validation successful");	  
 	  
 }
-  @Test(groups="group_invalid_login",retryAnalyzer = retryClass.class,dataProviderClass=dataProviderClass.class,dataProvider="login_invalid_credentials")
+  @Test(groups="group_invalid_login",retryAnalyzer = retryClass.class,dataProviderClass=dataProviderClass.class,dataProvider="login_invalid_password")
   public  void invalid_password(String  user,String pwd) throws IOException
   {	  
 	  lp.enterUsername(user);
@@ -143,7 +143,7 @@ public class LoginTest
 }
   
   @Test(groups="group_Performance_user",retryAnalyzer= retryClass.class,dataProviderClass=dataProviderClass.class,dataProvider="login_performance_glitch_user")
-  public  void performance_glitch_user(String  user,String pwd) throws AWTException
+  public  void performance_glitch_user(String  user,String pwd) 
   {	  
 	  lp.enterUsername(user);
 	  Listenerclass.test.get().info("Entered user");     			  

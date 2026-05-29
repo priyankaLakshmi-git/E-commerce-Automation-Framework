@@ -1,8 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite    name="LoginAutomation_1">
 <test name="login_1">
+<parameter name="browser" value="chrome"/>
+<parameter name="url" value="https://www.saucedemo.com/"/>
 <classes>
-<class name="DatafactoryClass.FactoryClass">
+<class name="test.RunTest">
 </class>
 </classes>
 </test>

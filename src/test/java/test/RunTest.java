@@ -6,13 +6,9 @@ import utilities.dataProviderClass;
 
 public class RunTest extends BaseClass
 {
-	public RunTest(String browser,String url)
-	  {
-		 super(browser,url);
-	  }
 	  
 @Test(dataProviderClass=dataProviderClass.class,dataProvider="login_standard_user")
-public void Login(String user,String  pwd) throws InvalidFormatException, IOException, InterruptedException 
+public void Login(String user,String  pwd) 
 {
 	LoginTest loginObj=new LoginTest(BaseClass.getDriver());
 	loginObj.standard_user(user,pwd);
@@ -29,7 +25,7 @@ public void AddProducts(String[] pname) throws InvalidFormatException, IOExcepti
 	       cartcount=pTest.Add_Products(pname[i]);
 	  }
 	  if(cartcount==0)
-		  System.out.println("cart is empty.Please add  any  item to proceed to check out");
+	  System.out.println("cart is empty.Please add  any  item to proceed to check out");
 	  Thread.sleep(5000);	  
 }
 
