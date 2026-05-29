@@ -22,7 +22,7 @@ public class BaseClass
         }   	           	
 	}
     
-   // @AfterMethod(alwaysRun=true)
+    @AfterMethod(alwaysRun=true)
     public   void teardown()
     {
     	
