@@ -1,6 +1,7 @@
 package test;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -22,7 +23,7 @@ public class BaseClass
         }   	           	
 	}
     
-    @AfterMethod(alwaysRun=true)
+    @AfterTest(alwaysRun=true)
     public   void teardown()
     {
     	
