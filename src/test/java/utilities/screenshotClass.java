@@ -17,7 +17,13 @@ public class screenshotClass
 	File target=ts.getScreenshotAs(OutputType.FILE);
 	String date =new java.text.SimpleDateFormat("dd-MM-yyyy_HH-mm-ss_a").format(new java.util.Date());
 	String filename="created time_"+date+ " " +"screen_onfailure.jpeg";
-	File  src=new File(System.getProperty("user.home")+File.separator+"Desktop"+File.separator+"My stuff"+File.separator+"Automation stuff"+File.separator+"Screenshots_onFailure"+File.separator+filename);
+	String Folderpath=System.getProperty("user.home")+File.separator+"failed_screenshots";
+	File folder=new File(Folderpath);
+	if(!folder.exists())
+	{
+		folder.mkdirs();
+	}
+	File src=new File(folder ,filename);
 	FileHandler.copy(target,src);
 	}
 	else

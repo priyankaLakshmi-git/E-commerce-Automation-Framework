@@ -95,10 +95,9 @@ public class dataProviderClass
 		public Object[][]testdata10() throws  IOException, InvalidFormatException 
 		{
 		    String[] products;
-		    File products_file=new File(System.getProperty("user.home")+File.separator+"Desktop"+File.separator+
-			"My stuff"+File.separator+"Automation stuff"+File.separator+"Login_Testdata.xlsx");
+		    File products_file=new File(System.getProperty("user.dir")+File.separator+"Testdata"+File.separator+"Login_Testdata.xlsx");
 	    	if(!products_file.exists())
-	    	throw new FileNotFoundException();
+	    	throw new FileNotFoundException("Products excel not found");
 	    	XSSFWorkbook Prod_book=new XSSFWorkbook(products_file);
 		    XSSFSheet s=Prod_book.getSheetAt(1);
 		    int cols=s.getRow(0).getLastCellNum();

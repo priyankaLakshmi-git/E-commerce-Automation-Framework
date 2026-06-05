@@ -97,7 +97,8 @@ public void checkout_pagevalidations()
     {
 		WebElement message=driver.findElement(By.xpath("//div[@class='complete-text']"));
 		if(message.getText().equalsIgnoreCase("Your order has been dispatched, and will arrive just as fast as the pony can get there!"))
-		Listenerclass.test.get().pass("sucessfully  Order placed");
+		Listenerclass.test.get().pass("Order placed sucessfully");
+		System.out.println("Order placed sucessfully  ");
 		JavascriptExecutor js=(JavascriptExecutor )driver;
 		js.executeScript("window.scrollBy(0,-320)");
 		
